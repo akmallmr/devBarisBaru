@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
   },
   textenter: {
     alignSelf: 'center',
+    color: '#f7f1e3'
   },
   footer: {
     backgroundColor: '#218c74',
