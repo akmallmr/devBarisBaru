@@ -68,7 +68,7 @@ const DashboardTabNavigator = createBottomTabNavigator (
                 )
             } 
         },
-        TestApp: { 
+        TodoApp: { 
             screen: TestApp,
             navigationOptions:{
             tabBarIcon: ({tintColor}) => (
