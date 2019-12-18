@@ -78,7 +78,7 @@ class StopWatch extends Component {
     onButtonClear() {
         this.setState({
             timer: null,
-            counter: '50',
+            counter: '00',
             miliseconds: '00'
         });
     }
