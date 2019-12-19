@@ -4,10 +4,13 @@ import { createStackNavigator } from 'react-navigation-stack'
 import { createBottomTabNavigator} from 'react-navigation-tabs'
 import Icon1 from 'react-native-vector-icons/Ionicons'
 import Icon2 from 'react-native-vector-icons/AntDesign'
+import * as firebase from 'firebase'
+
 
 import AuthNavigator from '../navigations/AuthNavigator'
 import TestAppNavigator from '../navigations/TestAppNavigator'
 
+import LoadingScreen from '../screens/Auth/Loading/index';
 import Home from '../screens/Home/Home'
 import TestApp from '../screens/TestApp/TestApp'
 import Pomodoro from '../screens/Pomodoro/Pomodoro'
@@ -15,6 +18,24 @@ import Screen1 from '../screens/Home/Screen1/Screen1'
 import Screen2 from '../screens/Home/Screen2/Screen2'
 import Screen3 from '../screens/Home/Screen3/Screen3'
 import Screen4 from '../screens/Home/Screen4/Screen4'
+
+
+
+
+var firebaseConfig = {
+  apiKey: 'AIzaSyCkFaslXf2iY_nZhCmZ6ZBd-32Whn_mKag',
+  authDomain: 'barisbarudev-b33f6.firebaseapp.com',
+  databaseURL: 'https://barisbarudev-b33f6.firebaseio.com',
+  projectId: 'barisbarudev-b33f6',
+  storageBucket: 'barisbarudev-b33f6.appspot.com',
+  messagingSenderId: '1064638820963',
+  appId: '1:1064638820963:web:9ee4435ac7054522643e56',
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+
+
 
 const HomeStack = createStackNavigator (
     {
@@ -45,15 +66,6 @@ const HomeStack = createStackNavigator (
         headerLayoutPreset: 'center'
     })
 
-// HomeStack.navigationOptions = ({navigation}) => {
-//     let {routeName} = navigation.state.routes[navigation.state.index];
-//     let navigationOptions = {};
-
-//     if (routeName === Screen2) {
-//         navigationOptions.tabBarVisible = false;
-//     }
-//     return navigationOptions;
-// };
 
 const DashboardTabNavigator = createBottomTabNavigator (
     {
@@ -92,17 +104,6 @@ const DashboardTabNavigator = createBottomTabNavigator (
          }
 },
 {
-    // navigationOptions: ({navigation}) => {
-    //     return {
-    //         headerRight: (
-    //             <Icon2
-    //                 style={{ padding: 10, marginRight: 15 }}
-    //                 onPress={() => navigation.navigate('Auth')}
-    //                 name="logout"
-    //                 size={25} />
-    //         )
-    //     }
-    // },
     tabBarOptions: {
         activeTintColor: 'white',
         activeBackgroundColor: '#F97F51',
@@ -120,12 +121,13 @@ const DashboardStackNavigator = createStackNavigator ({
 
 const RootNavigator = createSwitchNavigator(
     {
+        Loading: { screen: LoadingScreen },
         Auth: { screen: AuthNavigator },
         Main: { screen: DashboardStackNavigator }
     },
     {
         header: "none",
-        initialRouteKey: "Auth"
+        initialRouteKey: "Loading"
     }
 )
 

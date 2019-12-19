@@ -9,6 +9,9 @@ export default StyleSheet.create ({
     signout: {
         justifyContent: 'flex-end'
     },
+    signOutButton: {
+        marginTop: 32
+    },
     maincontainer: {
         justifyContent: 'center',
         alignItems: 'center'

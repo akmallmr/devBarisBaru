@@ -1,10 +1,31 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet, TouchableOpacity, StatusBar} from 'react-native'
 import Icon2 from 'react-native-vector-icons/Ionicons'
+import * as firebase from 'firebase'
 
 import styles from './styles'
 
 class Home extends Component {
+
+      state = { 
+        email: "",
+        displayName: "",
+      };
+
+      componentDidMount() {
+        const {email, displayName} = firebase.auth().currentUser;
+        
+        this.setState({email, displayName});
+      };
+
+      signOutUser = () => {
+        firebase
+            .auth()
+            .signOut();
+      };
+
+
+
     render() {
         return (
           <View style={styles.container}>
@@ -12,8 +33,14 @@ class Home extends Component {
               backgroundColor="white" 
               barStyle="dark-content" />
 
-            <View style={styles.container2}>
+            <Text> Hi, {this.state.email}!</Text>
 
+            <View style={styles.container2}>
+              <TouchableOpacity 
+                  style={styles.signoutButton}
+                  onPress = {this.signOutUser}>
+                    <Text> Logout </Text>
+              </TouchableOpacity>
             </View>
 
             <View style={styles.maincontainer}>

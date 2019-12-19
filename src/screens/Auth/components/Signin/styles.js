@@ -2,10 +2,20 @@ import React, { Component } from 'react'
 import { Text, View, StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
-    container2: {
+    container: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    errorMassage: {
+        height: 72,
+        justifyContent:'center',
+        alignSelf: 'center'
+    },
+    error: {
+        color: '#E9446A',
+        fontSize: 13,
+        fontWeight: 'bold',
     },
     id: {
         marginTop: 145,
